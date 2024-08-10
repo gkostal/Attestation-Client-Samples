@@ -42,9 +42,9 @@ vector<uint8_t> send_to_att_service(const uint8_t* data, size_t size)
         //
         // This sample gets a credential using a secret. See https://github.com/Azure/azure-sdk-for-cpp/tree/main/sdk/identity/azure-identity/samples for how to get other types of credentials.
         //
-        auto client_secret_cred = make_shared<Azure::Identity::ClientSecretCredential>(get_tenant_id(), get_client_id(), get_client_secret());
+        // auto client_secret_cred = make_shared<Azure::Identity::ClientSecretCredential>(get_tenant_id(), get_client_id(), get_client_secret());
 
-        auto att_client = AttestationClient::Create(get_maa_provider_uri(), client_secret_cred);
+        auto att_client = AttestationClient::Create(get_maa_provider_uri(), nullptr);
 
         auto response = att_client.AttestTpm(vector<uint8_t>(data, data + size));
 
