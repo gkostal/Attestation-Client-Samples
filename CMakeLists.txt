@@ -14,7 +14,7 @@ project(samples)
 find_program(NUGET_EXE NAMES nuget)
 
 if(NOT NUGET_EXE)
-    message(FATAL "CMake could not find the nuget command line tool. Please install it from https://www.nuget.org/downloads!")
+    message(FATAL_ERROR "CMake could not find the nuget command line tool. Please install it from https://www.nuget.org/downloads!")
 else()
     exec_program(${NUGET_EXE}
         ARGS install "Microsoft.Attestation.Client" -Version 0.1.181 -ExcludeVersion -OutputDirectory ${CMAKE_BINARY_DIR}/packages)
