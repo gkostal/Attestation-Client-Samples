@@ -31,9 +31,10 @@ This sample creates a TPM key named "att_sample_key" which is attested by Micros
 ## Running attestation samples
 
 1. Set up an Azure Attestation provider with a **TPM** policy using the instructions at https://docs.microsoft.com/en-us/azure/attestation/quickstart-portal.
-2. Build the project (it can be built by opening the folder in Visual Studio 2022).
-3. Make sure the sample requirements above are met.
-4. Run one of the samples listed above.
+1. Clone this repo into a very short directory path (e.g., `c:\s`) to avoid the Windows 256 character limit for nested file paths when compiling the project.
+1. Build the project (it can be built by opening the folder in Visual Studio 2022).
+1. Make sure the sample requirements above are met.
+1. Run one of the samples listed above.
 
 ## EnrollAik.ps1
 
