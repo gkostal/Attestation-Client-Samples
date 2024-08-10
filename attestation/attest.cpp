@@ -72,6 +72,7 @@ void attest(const att_session_params_tpm& params, const string& file_name)
     cout << "Starting attestation..." << endl;
 
     att_session session{};
+    cout << "Before create session..." << endl;
     exit_if_failed(att_create_session(ATT_SESSION_TYPE_TPM, &params, &session), "att_create_session");
 
     bool complete = false;
@@ -81,16 +82,22 @@ void attest(const att_session_params_tpm& params, const string& file_name)
     {
         att_buffer send_to_server = nullptr;
         size_t send_to_server_size = 0;
+        cout << "Before att_attest." << endl;
         exit_if_failed(att_attest(session.get(), received_from_server.data(), received_from_server.size(), &send_to_server, &send_to_server_size, &complete), "att_attest");
+        cout << "After att_attest.  Send to server size = " << send_to_server_size << "   Complete = " << complete << endl;
         if (send_to_server_size > 0)
         {
+            cout << "Before send_to_att_service." << endl;
             received_from_server = send_to_att_service(send_to_server.get(), send_to_server_size);
+            cout << "After send_to_att_service." << endl;
         }
     }
 
     att_buffer report = nullptr;
     size_t report_size = 0;
+    cout << "Before att_get_report." << endl;
     exit_if_failed(att_get_report(session.get(), &report, &report_size), "att_get_report");
+    cout << "After att_get_report." << endl;
 
     cout << "Attestation is complete. Report size: " << report_size << endl;
 

@@ -30,7 +30,7 @@
 
 using namespace std;
 
-#define AIK_NAME L"att_sample_aik"
+#define AIK_NAME L"att_sample_aik2"
 
 int main()
 {
